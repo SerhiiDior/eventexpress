@@ -38,5 +38,12 @@ pipeline {
                 '''
             }
         }
-    }
+        stage("run tests"){
+            steps {
+                echo " ============== start test =================="
+                sh '''
+                docker run -it -rm svdior/event:v1
+                '''
+        }
+    } 
 }
