@@ -25,9 +25,8 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('/') {
                 	sh """ docker build -t event:v1 """
-                }
+                
             }
         }
         stage("docker push") {
