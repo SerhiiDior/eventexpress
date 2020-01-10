@@ -26,9 +26,9 @@ RUN git clone https://github.com/SerhiiDior/eventexpress
 
 
 WORKDIR /eventexpress
-RUN mkdir Reports_Allure
+RUN mkdir /Reports_Allure
 
 RUN pip3 install -r requirements.txt
 
 
-CMD pytest --alluredir /Reports_Allure /Tests
+CMD pytest --alluredir ./Reports_Allure  /Tests
