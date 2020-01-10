@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== start test =================="
                 sh '''
-                docker run -it  svdior/eventexpress/event:v1
+                docker run  svdior/eventexpress/event:v1
                 '''
         }
     } 
