@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
-                docker push svdior/event:v1
+                docker push svdior/eventexpress/event:v1
                 '''
             }
         }
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 echo " ============== start test =================="
                 sh '''
-                docker run -it -rm svdior/event:v1
+                docker run -it -rm svdior/eventexpress/event:v1
                 '''
         }
     } 
