@@ -27,6 +27,7 @@ RUN git clone https://github.com/SerhiiDior/eventexpress
 
 
 RUN mkdir Reports_Allure
+WORKDIR /eventexpress
 RUN pip install -r requirements.txt
 
 
