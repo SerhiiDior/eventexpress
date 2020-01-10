@@ -21,8 +21,8 @@ ENV DISPLAY=:99
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 
-RUN apt-get update && apt-get upgrade && apt-get install git
-RUN apt install python3-pip
+RUN apt-get update && apt-get upgrade && apt-get install git -y
+RUN apt install python3-pip -y
 RUN git clone https://github.com/SerhiiDior/eventexpress
 
 
