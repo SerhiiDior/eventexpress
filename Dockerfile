@@ -15,7 +15,7 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 #install xvfb
 RUN apt-get install -yqq xvfb
 
-set display port and dbus env to avoid hanging
+#set display port and dbus env to avoid hanging
 ENV DISPLAY=:99
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
