@@ -1,5 +1,7 @@
 FROM python:3.7.6
 
+WORKDIR /code
+
 # install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -18,9 +20,12 @@ RUN apt-get install -yqq xvfb
 ENV DISPLAY=:99
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
-RUN mkdir /code
-COPY . /code
-WORKDIR /code
+
+RUN apt-get update && apt-get upgrade && apt-get install git
+RUN git clone https://github.com/SerhiiDior/eventexpress
+
+
+
 RUN mkdir Reports_Allure
 RUN pip install -r requirements.txt
 
