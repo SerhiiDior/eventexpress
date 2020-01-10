@@ -29,14 +29,7 @@ pipeline {
                 
             }
         }
-        stage("docker push") {
-            steps {
-                echo " ============== start pushing image =================="
-                sh '''
-                docker push svdior/eventexpress/event:v1
-                '''
-            }
-        }
+        
         stage("run tests"){
             steps {
                 echo " ============== start test =================="
