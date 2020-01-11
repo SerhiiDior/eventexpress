@@ -6,11 +6,16 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 import os
+import pathlib
 
+
+p = pathlib.Path(__file__).parent.parent
+print(str(p))
 current_path = os.path.abspath(os.path.dirname(__file__))
-
-path_chrome = os.path.join(current_path + "\\chromedriver.exe")
+print(current_path)
+p = os.path.join(str(p) + "\\chromedriver.exe")
 path_firefox = os.path.join(current_path + "\\geckodriver.exe")
+print(p)
 
 
 
@@ -43,7 +48,7 @@ class Driver:
             # options.add_argument('--disable-gpu')
             # options.add_argument("--no-sandbox")
             # options.add_argument("window-size=1400,2100")  # Linux should be activate
-            return webdriver.Chrome(path_chrome, options=options)
+            return webdriver.Chrome(p, options=options)
 
         elif self.browser.lower() == "ie":
             '''The IE driver does not support execution without an active, 
