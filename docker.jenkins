@@ -25,7 +25,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                	sh """ docker build -t svdior/eventexpress/event:v1 ."""
+                	sh """ docker build -t event:v1 ."""
                 
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== start test =================="
                 sh '''
-                docker run  svdior/eventexpress/event:v1
+                docker run  event:v1
                 '''
         }
     } 
