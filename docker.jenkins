@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== push to hub =================="
                 sh '''
-                docker push svdior/eventexpress/event:latest
+                docker push svdior/event:latest
                 '''
         }
     } 
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo " ============== start test =================="
                 sh '''
-                docker run svdior/eventexpress/event:latest
+                docker run svdior/event:latest
                 '''
         }
     } 
