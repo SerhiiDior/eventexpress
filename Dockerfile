@@ -22,11 +22,11 @@ RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 
 # WORKDIR /workspace/eventexpress
-# RUN mkdir /Reports_Allure
+RUN mkdir /Reports_Allure
 
-# RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
-# CMD pytest --alluredir ./Reports_Allure  ./Tests 
+CMD pytest --alluredir ./Reports_Allure  ./Tests 
 
 
 
