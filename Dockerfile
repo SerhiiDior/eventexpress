@@ -5,18 +5,18 @@ RUN apt-get update && apt-get install && apt-get install git -y  --no-install-re
                 default-libmysqlclient-dev \
         && rm -rf /var/lib/apt/lists/*
         
-# install google chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-RUN apt-get -y update
-RUN apt-get install -y google-chrome-stable
+# # install google chrome
+# RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+# RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+# RUN apt-get -y update
+# RUN apt-get install -y google-chrome-stable
 
-#install xvfb
-RUN apt-get install -yqq xvfb
+# #install xvfb
+# RUN apt-get install -yqq xvfb
         
-# #set display port and dbus env to avoid hanging
-ENV DISPLAY=:99
-ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
+# # #set display port and dbus env to avoid hanging
+# ENV DISPLAY=:99
+# ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 
 
