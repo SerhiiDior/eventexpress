@@ -11,7 +11,7 @@ from Data.credentials import user, admin
 def driver_init(request):
     '''Instantiate webdriver for selected browser and open homepage'''
     driver = Driver(Config.BROWSER)
-    driver.delete_all_cookies()
+    #driver.delete_all_cookies()
     driver.maximize_window()
     driver.get(Config.HOME_URL)
     yield driver
