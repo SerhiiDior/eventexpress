@@ -22,6 +22,7 @@ RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 
 
 # WORKDIR /workspace/eventexpress
+WORKDIR /workdir
 RUN mkdir /Reports_Allure
 
 RUN pip3 install -r requirements.txt
