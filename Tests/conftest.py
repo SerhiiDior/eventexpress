@@ -1,7 +1,7 @@
 import pytest
 import allure
 from allure_commons.types import AttachmentType
-from Driver.driver import Driver
+from Driver.driver_cap import Driver
 from Data.test_data import Config
 from utilities.testFrame import InitPages
 from Data.credentials import user, admin
