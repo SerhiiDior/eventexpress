@@ -30,7 +30,7 @@ RUN mkdir /Reports_Allure
 
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["pytest"," --alluredir ./Reports_Allure  ./Tests"]
+CMD pytest --alluredir ./Reports_Allure  ./Tests 
 
 
 
