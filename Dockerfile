@@ -20,15 +20,18 @@ ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 
 
+RUN apt-get update && apt-get upgrade && apt-get install git -y
 RUN apt install python3-pip -y
 RUN git clone https://github.com/SerhiiDior/eventexpress
 
 
-WORKDIR source/eventexpress
+WORKDIR /eventexpress
 RUN mkdir /Reports_Allure
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 ENTRYPOINT ["pytest"," --alluredir ./Reports_Allure  ./Tests"]
-        
-    
+
+
+
+
