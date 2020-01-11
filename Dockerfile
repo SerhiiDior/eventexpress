@@ -1,8 +1,5 @@
 FROM python:3.7
 
-RUN mkdir /source
-WORKDIR /source
-
 RUN apt-get update && apt-get install && apt-get install git -y  --no-install-recommends \
 		libpq-dev \
                 default-libmysqlclient-dev \
