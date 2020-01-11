@@ -45,8 +45,8 @@ class Driver:
         elif self.browser.lower() == "chrome":
             options = Options()
             options.headless = mode
-            # options.add_argument('--disable-gpu')
-            # options.add_argument("--no-sandbox")
+            options.add_argument('--disable-gpu')
+            options.add_argument("--no-sandbox")
             # options.add_argument("window-size=1400,2100")  # Linux should be activate
             return webdriver.Chrome(p, options=options)
 
