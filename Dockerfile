@@ -18,11 +18,11 @@ RUN apt-get install -y google-chrome-stable
 RUN apt-get install -yqq xvfb
         
 # #set display port and dbus env to avoid hanging
-# ENV DISPLAY=:99
-# ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
+ENV DISPLAY=:99
+ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 
-RUN apt-get update && apt-get upgrade && 
+
 RUN apt install python3-pip -y
 RUN git clone https://github.com/SerhiiDior/eventexpress
 
