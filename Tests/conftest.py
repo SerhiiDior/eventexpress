@@ -1,7 +1,7 @@
 import pytest
 import allure
 from allure_commons.types import AttachmentType
-from Driver.driver import Driver
+from Driver.driver_cap import Driver
 from Data.test_data import Config
 from utilities.testFrame import InitPages
 from Data.credentials import user, admin
@@ -10,7 +10,7 @@ from Data.credentials import user, admin
 @pytest.fixture(scope='function')
 def driver_init(request):
     '''Instantiate webdriver for selected browser and open homepage'''
-    driver = Driver(Config.BROWSER).set_browser(Config.TEST_MODE)
+    driver = Driver(Config.BROWSER)
     driver.delete_all_cookies()
     driver.maximize_window()
     driver.get(Config.HOME_URL)
