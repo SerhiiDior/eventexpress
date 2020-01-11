@@ -1,7 +1,7 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.microsoft import IEDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.firefox import GeckoDriverManager
+# from webdriver_manager.microsoft import IEDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
@@ -27,7 +27,7 @@ class Driver:
         if self.browser.lower() == "firefox":
             options = FirefoxOptions()
             options.headless = mode
-            return webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
+            return webdriver.Firefox(executable_path=GeckoDriverManager(), options=options)
 
         elif self.browser.lower() == "chrome":
             options = Options()
