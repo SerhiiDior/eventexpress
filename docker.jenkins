@@ -23,15 +23,6 @@ pipeline {
             }
         }
         
-        stage("del_c"){
-            steps {
-                echo " ============== del all con =================="
-                 sh '''
-                 docker rm $(docker ps -aq)
-                
-                  '''
-        }
-    } 
         stage("del_i"){
              steps {
                 echo " ============== del all images =================="
