@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo " ============== start test =================="
                 sh '''
-                docker run svdior/event:latest
+                docker rmi $(docker images -q)
                 '''
         }
     } 
