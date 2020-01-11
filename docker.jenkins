@@ -23,7 +23,7 @@ pipeline {
             }
         }
         
-        stage("del_c){
+        stage("del_c"){
             steps {
                 echo " ============== del all con =================="
                  sh '''
@@ -32,7 +32,7 @@ pipeline {
                   '''
         }
     } 
-        stage("del_i){
+        stage("del_i"){
              steps {
                 echo " ============== del all images =================="
                 sh '''
