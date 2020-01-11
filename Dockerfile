@@ -27,7 +27,7 @@ RUN apt install python3-pip -y
 RUN git clone https://github.com/SerhiiDior/eventexpress
 
 
-WORKDIR /eventexpress
+WORKDIR source/eventexpress
 RUN mkdir /Reports_Allure
 
 RUN pip3 install --no-cache-dir -r requirements.txt
