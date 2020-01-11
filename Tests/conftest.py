@@ -6,16 +6,30 @@ from Driver.driver import Driver
 from Data.test_data import Config
 from utilities.testFrame import InitPages
 from Data.credentials import user, admin
+##############################################
 
 
-@pytest.fixture(scope='function')
-def driver_init(request):
-    '''Instantiate webdriver for selected browser and open homepage'''
-    driver = Driver(Config.BROWSER).set_browser(Config.TEST_MODE)
+
+
+
+
+
+
+
+
+
+
+
+
+#####111#######
+@pytest.fixture(scope='session')
+def driver_init():
+    driver = Driver(Config.BROWSER).set_browser()
     driver.delete_all_cookies()
     driver.maximize_window()
+    driver.implicitly_wait(10)
     driver.get(Config.HOME_URL)
-    yield driver
+    return driver
     driver.close()
     driver.quit()
 
