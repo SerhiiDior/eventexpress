@@ -30,11 +30,11 @@ pipeline {
             }
         }
         
-        stage("pull hub"){
+        stage("push hub"){
             steps {
-                echo " ============== start test =================="
+                echo " ============== push to hub =================="
                 sh '''
-                docker pull svdior/event:latest
+                docker push svdior/eventexpress/event:latest
                 '''
         }
     } 
