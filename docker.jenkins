@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== start test =================="
                 sh '''
-                docker run  event:v1
+                echo "Hello"
                 '''
         }
     } 
