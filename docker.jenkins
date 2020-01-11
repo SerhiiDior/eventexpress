@@ -25,16 +25,24 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                	sh """ docker build -t $BUILD_ID ."""
+                	sh """ docker build -t event ."""
                 
             }
         }
         
-        stage("run tests"){
+        stage("pull hub"){
             steps {
                 echo " ============== start test =================="
                 sh '''
-                echo "Hello"
+                docker pull svdior/eventexpress/event:latest
+                '''
+        }
+    } 
+        stage("run test"){
+            steps {
+                echo " ============== start test =================="
+                sh '''
+                docker run svdior/eventexpress/event:latest
                 '''
         }
     } 
