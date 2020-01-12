@@ -23,7 +23,7 @@ RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 ENV PATH $CHROMEDRIVER_DIR:$PATH
 
 RUN mkdir /Reports_Allure
-RUN del google-chrome-stable_current_amd64.deb
+RUN rm google-chrome-stable_current_amd64.deb
 RUN pip3 install -r requirements.txt
 
 CMD pytest --alluredir ./Reports_Allure  ./Tests 
