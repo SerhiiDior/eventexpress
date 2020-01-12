@@ -3,7 +3,7 @@ FROM python:3.7
 COPY . /workdir
 WORKDIR /workdir
 
-# RUN apt-get update 
+RUN apt-get update 
 # RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
 
 # #download and install chrome
@@ -12,7 +12,8 @@ WORKDIR /workdir
 
 #################################################################################
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
-RUN apt-get install -y wget xvfb unzip
+RUN apt-get install xvfb && \
+    apt-get install -yqq unzip 
 
 # Set up the Chrome PPA
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -23,7 +24,7 @@ RUN apt-get update -y
 RUN apt-get install -y google-chrome-stable
 #################################################################################
 # Set up Chromedriver Environment variables
-ENV CHROMEDRIVER_VERSION 2.19
+ENV CHROMEDRIVER_VERSION 2.9
 ENV CHROMEDRIVER_DIR /chromedriver
 RUN mkdir $CHROMEDRIVER_DIR
 
