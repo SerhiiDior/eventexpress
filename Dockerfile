@@ -43,7 +43,8 @@ RUN mkdir /Reports_Allure
 # #####RUN rm google-chrome-stable_current_amd64.deb
 RUN pip3 install -r requirements.txt
 
-CMD pytest --alluredir ./Reports_Allure  ./Tests 
+ENTRYPOINT pytest --alluredir ./Reports_Allure  ./Tests 
+RUN python send_restalt.py
 
 
 
