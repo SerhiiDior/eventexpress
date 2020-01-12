@@ -27,7 +27,7 @@ pipeline {
              steps {
                 echo " ============== del all images =================="
                 sh '''
-                 docker rmi $(docker images -q)
+                 docker rmi $(docker images -q) -f
                 '''
         }
     } 
