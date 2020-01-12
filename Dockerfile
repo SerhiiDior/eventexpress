@@ -43,8 +43,9 @@ RUN mkdir /Reports_Allure
 # #####RUN rm google-chrome-stable_current_amd64.deb
 RUN pip3 install -r requirements.txt
 
+RUN ["python",send_resalt.py"]
 ENTRYPOINT pytest --alluredir ./Reports_Allure  ./Tests 
-RUN ["python","workdir/send_resalt.py"]
+
 
 
 
