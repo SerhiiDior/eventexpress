@@ -23,14 +23,7 @@ pipeline {
             }
         }
         
-        stage("del_i"){
-             steps {
-                echo " ============== del all images =================="
-                sh '''
-                 docker rmi $(docker images -q) -f
-                '''
-        }
-    } 
+        
       stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
