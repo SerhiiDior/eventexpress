@@ -34,7 +34,7 @@ pipeline {
       stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                	sh """ docker build -t svdior/event:latest ."""
+                	sh """ docker build --no-cache -t svdior/event:latest ."""
                 
             }
         }
