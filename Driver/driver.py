@@ -5,19 +5,6 @@ from webdriver_manager.microsoft import IEDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
-import os
-import pathlib
-
-
-p = pathlib.Path(__file__).parent.parent
-print(str(p))
-current_path = os.path.abspath(os.path.dirname(__file__))
-print(current_path)
-p = os.path.join(str(p) + "\\chromedriver.exe")
-path_firefox = os.path.join(current_path + "\\geckodriver.exe")
-print(p)
-
-
 
 class Driver:
     '''Provides automatically manage of drivers for different browsers'
@@ -40,15 +27,15 @@ class Driver:
         if self.browser.lower() == "firefox":
             options = FirefoxOptions()
             options.headless = mode
-            return webdriver.Firefox(executable_path=path_firefox, options=options)
+            return webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
 
         elif self.browser.lower() == "chrome":
             options = Options()
             options.headless = mode
-            options.add_argument('--disable-gpu')
-            options.add_argument("--no-sandbox")
+            # options.add_argument('--disable-gpu')
+            # options.add_argument("--no-sandbox")
             # options.add_argument("window-size=1400,2100")  # Linux should be activate
-            return webdriver.Chrome(p, options=options)
+            return webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
         elif self.browser.lower() == "ie":
             '''The IE driver does not support execution without an active, 
