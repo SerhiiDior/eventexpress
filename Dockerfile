@@ -45,7 +45,7 @@ RUN pip3 install -r requirements.txt
 
 
 ENTRYPOINT pytest --alluredir ./Reports_Allure  ./Tests 
-CMD ["python","send_resalt.py"]
+CMD python3 send_resalt.py
 
 
 
