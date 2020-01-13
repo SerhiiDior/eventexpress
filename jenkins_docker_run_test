@@ -24,14 +24,7 @@ pipeline {
             }
         }
     
-           stage("Allure result"){
-                steps {
-                    echo "============== send result ====================="
-                    sh '''
-                    docker run -v directory:/workdir svdior/pyslim  python send_resalt.py
-                       '''
-                  }
-            }
+           
         }
     }
 }
