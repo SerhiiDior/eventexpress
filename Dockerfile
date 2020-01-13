@@ -1,6 +1,7 @@
 FROM python:3.7
 
 COPY . /workdir
+RUN mkdir /Reports_Allure
 WORKDIR /workdir
 
 RUN apt-get update 
@@ -39,7 +40,7 @@ RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 
 # Put Chromedriver into the PATH
 ENV PATH $CHROMEDRIVER_DIR:$PATH
-RUN mkdir /Reports_Allure
+
 # #####RUN rm google-chrome-stable_current_amd64.deb
 RUN pip3 install -r requirements.txt
 
