@@ -11,12 +11,12 @@ pipeline {
     stages {
         stage('Test Api') { 
             steps { echo "========== run image svdior/pyslim =========="
-                sh 'docker run -v directory:/workdir svdior/pyslim pytest --alluredir /workdir/Reports_Allure /Tests' 
+                sh 'docker run --rm -v directory:/workdir svdior/pyslim pytest --alluredir /workdir/Reports_Allure Tests' 
             }
         }
         stage('Test'){
             steps {
-                sh 'docker run -v directory:/workdir svdior/pyslim pytest --alluredir /workdir/Reports_Allure /Tests'
+                sh 'docker run -rm -v directory:/workdir svdior/pyslim python send_resalt.py'
                  
             }
         }
