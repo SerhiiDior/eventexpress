@@ -27,7 +27,7 @@ pipeline {
         
         stage('Test'){
             steps {
-                sh 'docker run -rm -v directory:/workdir svdior/pyslim python send_resalt.py'
+                sh 'docker run --rm -v directory:/workdir svdior/pyslim python send_resalt.py'
                  
             }
         }
