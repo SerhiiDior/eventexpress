@@ -9,10 +9,11 @@ pipeline {
   
     }
     stages {
+        try {
         stage("start project"){
             steps {
                 echo " ============== start tests =================="
-                try {
+                
                 sh '''
                 docker run  -v directory:/workdir svdior/pyslim
                 '''
