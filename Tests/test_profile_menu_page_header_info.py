@@ -2,7 +2,7 @@ import pytest
 from Data.test_data import ProfileMenuPageHeaderInfo as data
 from Locators.locators import ProfileMenuPageHeaderInfoLocators as locator
 
-
+@pytest.mark.skip
 @pytest.mark.parametrize("userinfo_input", ['User Name:',
                                             'UserTest',
                                             'Age:',
