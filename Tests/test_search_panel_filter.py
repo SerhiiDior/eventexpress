@@ -1,7 +1,7 @@
 from Data.credentials import user,admin
 import allure
 
-
+@pytest.mark.skip
 @allure.feature('Search field')
 @allure.story("Search EVENT")
 @allure.severity(allure.severity_level.CRITICAL)
