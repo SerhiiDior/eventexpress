@@ -8,6 +8,8 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
+   
+    
     stages {
         stage('Test Api') { 
             steps {
@@ -21,13 +23,25 @@ pipeline {
         stage('Allure_Report') {
             steps {
                 catchError (buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh 'docker run -d --rm -p 4040:4040 -p 5050:5050 -e CHECK_RESULTS_EVERY_SECONDS=3 -e KEEP_HISTORY="TRUE" -v Allure:/app/allure-results frankescobar/allure-docker-service'
+                sh 'docker run -d --rm --name alure -p 4040:4040 -p 5050:5050 -e CHECK_RESULTS_EVERY_SECONDS=3 -e KEEP_HISTORY="TRUE" -v Allure:/app/allure-results frankescobar/allure-docker-service'
             }
         }
      }
+        stage('get data from allure container'){
+            steps {
+                 environment {
+                        CONTAINER_ID = '${sh(docker inspect --format="{{.ID}}" alure }'
+                        CONTAINER_IP = "${sh(docker inspect -f'{{ .NetworkSettings.IPAddress }}' '${env.CONTAINER_ID})}'"
+        }
+                echo CONTAINER_IP
+                 
+            }
+        }
         
         stage('Test'){
             steps {
+                script {
+                    CONTAINER_ID = 
                 sh 'docker run --rm -v directory:/workdir svdior/pyslim python send_resalt.py'
                  
             }
