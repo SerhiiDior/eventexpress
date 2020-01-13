@@ -14,14 +14,14 @@ pipeline {
 
     try {    
     stage("start project"){
-            steps {
-                echo " ============== start tests =================="
-                sh '''
-                docker run  -v directory:/workdir svdior/pyslim
+         steps {
+              echo " ============== start tests =================="
+              sh '''
+              docker run  -v directory:/workdir svdior/pyslim
                 ''' 
                   }
-            } catch (Exception e) {
-                 echo "Stage failed, but we continue"  
+          } catch (Exception e) {
+             echo "Stage failed, but we continue"  
             }
     stage("start project"){
             steps {
