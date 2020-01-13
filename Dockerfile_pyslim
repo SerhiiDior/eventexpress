@@ -20,7 +20,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list 
 
 # Update the package list and install chrome
-RUN apt-get update -y
+#RUN apt-get update -y
 RUN apt-get install -y google-chrome-stable -y
 #################################################################################
 # Set up Chromedriver Environment variables
@@ -43,6 +43,6 @@ RUN mkdir /Reports_Allure
 # #####RUN rm google-chrome-stable_current_amd64.deb
 RUN pip3 install -r requirements.txt
 
-
-ENTRYPOINT pytest --alluredir ./Reports_Allure  ./Tests 
-CMD python3 --version
+CMD pytest --alluredir ./Reports_Allure  ./Tests && python3 send_resalt.py
+#ENTRYPOINT pytest --alluredir ./Reports_Allure  ./Tests 
+#CMD python3 --version
