@@ -1,28 +1,37 @@
 #!groovy
-// Run docker build
+// Run docker 
 properties([disableConcurrentBuilds()])
 
-pipeline {
-    agent {
-        label 'master'
-        }
-    triggers { pollSCM('* * * * *') }
+pipeline { 
+    agent any 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        skipStagesAfterUnstable()
         timestamps()
     }
-
-    
-    stages("start project"){
-        stage ("run tests") {
-            steps {
-                echo " ============== send_resalt =================="
-                sh '''
-                docker run  -v directory:/workdir svdior/pyslim 
-                '''
-                if (build == FAILURE){
-                    echo "crash"}
+    stages {
+        stage('Test Api') { 
+            steps { echo "========== run image svdior/pyslim =========="
+                sh 'docker run -v directory:/workdir svdior/pyslim pytest --alluredir /workdir/Reports_Allure /Tests' 
+            }
         }
-    } 
+        stage('Test'){
+            steps {
+                sh 'docker run -v directory:/workdir svdior/pyslim pytest --alluredir /workdir/Reports_Allure /Tests'
+                 
+            }
+        }
+        stage('Allure_Report') {
+            steps {
+                sh 'docker run -it --rm -p 4040:4040 -p 5050:5050 -e CHECK_RESULTS_EVERY_SECONDS=3 -e KEEP_HISTORY="TRUE" -v Allure:/app/allure-results frankescobar/allure-docker-service'
+            }
+        }
+    }
 }
-}
+
+
+
+
+
+
+
+
