@@ -1,9 +1,9 @@
 FROM python:slim-buster
 
 COPY . /workdir
-
-RUN mkdir Reports_Allure
 WORKDIR /workdir
+RUN mkdir Reports_Allure
+
 
 
 RUN apt-get update && apt-get install wget -y &&  apt-get install -y gnupg2
