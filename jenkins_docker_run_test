@@ -19,7 +19,7 @@ pipeline {
                 sh '''
                 docker run  -v directory:/workdir svdior/pyslim 
                 '''
-                if (build == FAILURE):
-                echo "crash"
+                if (build == FAILURE){
+                    echo "crash"}
         }
     } 
