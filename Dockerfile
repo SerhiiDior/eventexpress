@@ -1,7 +1,7 @@
 FROM python:3.7
 
 COPY . /workdir
-RUN mkdir /Reports_Allure
+
 WORKDIR /workdir
 
 RUN apt-get update 
@@ -43,7 +43,7 @@ ENV PATH $CHROMEDRIVER_DIR:$PATH
 
 # #####RUN rm google-chrome-stable_current_amd64.deb
 RUN pip3 install -r requirements.txt
-
+RUN mkdir /Reports_Allure
 
 CMD pytest --alluredir ./Reports_Allure  ./Tests && python3 send_resalt.py
 
