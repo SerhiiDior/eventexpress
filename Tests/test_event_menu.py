@@ -1,7 +1,7 @@
 import pytest
 from Data.test_data import ProfilePageEventsMenu as data
 
-
+@pytest.mark.skip
 @pytest.mark.parametrize("test_input", [data.FUTURE_EVENTS,
                                         data.ARCHIVE_EVENTS,
                                         data.VISITED_EVENTS,
