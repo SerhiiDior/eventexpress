@@ -1,6 +1,7 @@
 from Data.credentials import user,admin
 from Locators.locators import ContactUsPageLocators as locator
 import allure
+import pytest
 
 @pytest.mark.skip
 @allure.feature("Message 'Required'")
