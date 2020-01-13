@@ -2,7 +2,7 @@ from Data.credentials import user,admin
 from Locators.locators import ContactUsPageLocators as locator
 import allure
 
-
+@pytest.mark.skip
 @allure.feature("Message 'Required'")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_contact_us_clear(app, screenshot_on_failure):
