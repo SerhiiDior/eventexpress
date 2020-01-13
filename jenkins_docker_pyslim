@@ -40,11 +40,19 @@ pipeline {
                 '''
         }
     } 
-        stage("run test"){
+        stage("del images"){
             steps {
-                echo " ============== del all images =================="
+                echo " ============== del pyslim & python images =================="
                 sh '''
                 docker rmi svdior/pyslim:latest python:slim-buster
+                '''
+        }
+    } 
+         stage("start project"){
+            steps {
+                echo " ============== start tests =================="
+                sh '''
+                docker run -it --rm -v directory:/workdir svdior/pyslim
                 '''
         }
     } 
