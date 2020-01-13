@@ -10,7 +10,7 @@ pipeline {
     }
     environment {
         CONTAINER_ID = ''
-        CONTAINER_IP = {{ .NetworkSettings.IPAddress }}
+        CONTAINER_IP = "{{ .NetworkSettings.IPAddress }}"
     }
   
    
