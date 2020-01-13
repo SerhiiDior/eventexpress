@@ -14,17 +14,22 @@ pipeline {
                 sh 'docker run --rm -v directory:/workdir svdior/pyslim pytest --alluredir /workdir/Reports_Allure Tests' 
             }
         }
+        
+        
+        stage('Allure_Report') {
+            steps {
+                sh 'docker run -it --rm -p 4040:4040 -p 5050:5050 -e CHECK_RESULTS_EVERY_SECONDS=3 -e KEEP_HISTORY="TRUE" -v Allure:/app/allure-results frankescobar/allure-docker-service'
+            }
+        }
+        
+        
         stage('Test'){
             steps {
                 sh 'docker run -rm -v directory:/workdir svdior/pyslim python send_resalt.py'
                  
             }
         }
-        stage('Allure_Report') {
-            steps {
-                sh 'docker run -it --rm -p 4040:4040 -p 5050:5050 -e CHECK_RESULTS_EVERY_SECONDS=3 -e KEEP_HISTORY="TRUE" -v Allure:/app/allure-results frankescobar/allure-docker-service'
-            }
-        }
+        
     }
 }
 
