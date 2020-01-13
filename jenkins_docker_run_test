@@ -34,7 +34,7 @@ pipeline {
                     }
                 }
                 echo "$env.CONTAINER_IP"
-                echo "$env.CONTAINER_ID"
+                echo "CONTAINER_ID"
             
             }
         
