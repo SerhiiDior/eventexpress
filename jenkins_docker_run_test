@@ -10,7 +10,7 @@ pipeline {
     }
     environment {
         CONTAINER_ID = ''
-        CONTAINER_IP = '${sh(script:docker inspect -f {{ .NetworkSettings.IPAddress }} 230c033b28a1)}'
+        CONTAINER_IP = '${sh(script:docker inspect -f {{ .NetworkSettings.IPAddress }} 230c033b28a1, returnStdout: true)}'
     }
   
    
