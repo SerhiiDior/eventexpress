@@ -10,11 +10,13 @@ pipeline {
     }
     stages {
         stage('Test Api') { 
-            steps { echo "========== run image svdior/pyslim =========="
+            steps {
+                catchError (buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                echo "========== run image svdior/pyslim =========="
                 sh 'docker run --rm -v directory:/workdir svdior/pyslim ' 
             }
         }
-        
+    }  
         
         stage('Allure_Report') {
             steps {
