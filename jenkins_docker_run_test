@@ -13,7 +13,8 @@ pipeline {
     }
 
     
-    stage("start project"){
+    stages("start project"){
+        stage ("run tests") {
             steps {
                 echo " ============== send_resalt =================="
                 sh '''
