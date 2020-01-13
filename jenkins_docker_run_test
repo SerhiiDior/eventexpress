@@ -10,20 +10,20 @@ pipeline {
     }
     stages {
         try {
-        stage("start project"){
-            steps {
-                echo " ============== start tests =================="
+            stage("start project"){
+                steps {
+                    echo " ============== start tests =================="
                 
-                sh '''
-                docker run  -v directory:/workdir svdior/pyslim
-                '''
-                } 
-        } catch (Exception e) {
+                    sh '''
+                    docker run  -v directory:/workdir svdior/pyslim
+                     '''
+                    }    
+            } catch (Exception e) {
                  echo "Stage failed, but we continue"  
             }
         }
     
-        stage("Allure result"){
+           stage("Allure result"){
             steps {
                     echo "============== send result ====================="
                 sh '''
