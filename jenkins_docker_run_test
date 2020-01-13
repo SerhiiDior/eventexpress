@@ -29,15 +29,16 @@ pipeline {
      }
         stage('get data from allure container'){
             steps {
+                script {
                  environment {
                         CONTAINER_ID = '${sh(docker inspect --format="{{.ID}}" alure) }'
                         CONTAINER_IP = '${sh(docker inspect -f "{{ .NetworkSettings.IPAddress }}" "${env.CONTAINER_ID}")}'
-        
-                        echo "$env.CONTAINER_IP"
+                 }
+                  echo "$env.CONTAINER_IP"
                 }
             }
         }
-        
+    }
         stage('Test'){
             steps {
                 script {
@@ -49,7 +50,7 @@ pipeline {
         
     }
 }
-}
+
 
 
 
