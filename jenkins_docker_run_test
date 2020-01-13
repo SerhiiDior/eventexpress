@@ -1,0 +1,39 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'master'
+        }
+    triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("docker login") {
+            steps {
+                echo " ============== docker login =================="
+                withCredentials([usernamePassword(credentialsId: 'docker_svdior', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh """
+                    docker login -u $USERNAME -p $PASSWORD
+                    """
+                }
+            }
+        }
+        
+ 
+         stage("start project"){
+            steps {
+                echo " ============== start tests =================="
+                sh '''
+                docker run  -v directory:/workdir svdior/pyslim
+                '''
+                sh '''
+                docker run  -v directory:/workdir svdior/pyslim python send_results.py
+                '''
+        }
+    } 
+}
+}
