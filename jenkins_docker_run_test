@@ -27,7 +27,7 @@ pipeline {
                 script {
                     environment {
                         CONTAINER_ID = '${sh(docker inspect --format="{{.ID}}" alure) }'
-                        CONTAINER_IP = '${sh(docker inspect -f "{{ .NetworkSettings.IPAddress }}" 230c033b28a1)}'
+                        CONTAINER_IP = sh 'docker inspect -f "{{ .NetworkSettings.IPAddress }}" 230c033b28a1'
                  }
                     
                 }
