@@ -44,8 +44,7 @@ RUN mkdir /Reports_Allure
 RUN pip3 install -r requirements.txt
 
 
-ENTRYPOINT pytest --alluredir ./Reports_Allure  ./Tests 
-CMD python3 send_resalt.py
+CMD pytest --alluredir ./Reports_Allure  ./Tests && python3 send_resalt.py
 
 
 
