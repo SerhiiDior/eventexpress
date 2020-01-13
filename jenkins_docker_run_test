@@ -8,17 +8,10 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
-    environment {
-        CONTAINER_NAME = "allure" 
-        CONTAINER_IP = ''
-        CONTAINER_ID = ''
-    }
+  
    
     
     stages {
-       
-        
-        
         stage('Allure_Report') {
             steps {
                 catchError (buildResult: 'SUCCESS', stageResult: 'FAILURE') {
