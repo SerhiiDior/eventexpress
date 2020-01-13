@@ -11,7 +11,7 @@ pipeline {
     environment {
         CONTAINER_NAME = "allure" 
         CONTAINER_IP = ''
-        
+        CONTAINER_ID = ''
     }
    
     
@@ -29,21 +29,20 @@ pipeline {
         
         stage('get data from allure container'){
             steps {
-                
-                environment {
+                script {
+                    environment {
+                        
+                        env.CONTAINER_ID = '${sh(docker inspect --format="{{.ID}}" alure) }'
+                        CONTAINER_IP = '${sh(docker inspect -f "{{ .NetworkSettings.IPAddress }}" 230c033b28a1)}'
+                 }
                     
-                    CONTAINER_ID = '${sh(script:\'docker inspect --format="{{.ID}}" alure\') }'
-                    CONTAINER_IP = '${sh(docker inspect -f "{{ .NetworkSettings.IPAddress }}" 230c033b28a1)}'
-                 
-                  }
-                
-                echo "$env.CONTAINER_ID"
+                }
+                  echo "$env.CONTAINER_ID"
                 
             }
         }
-        
    
-        stage('Test'){
+         stage('Test'){
             steps {
                 
                 sh 'docker run --rm -v directory:/workdir svdior/pyslim python send_resalt.py'
