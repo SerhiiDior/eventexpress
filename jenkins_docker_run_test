@@ -12,7 +12,7 @@ pipeline {
         timestamps()
     }
 
-    try{    
+    try {    
     stage("start project"){
             steps {
                 echo " ============== start tests =================="
