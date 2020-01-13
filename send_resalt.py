@@ -1,9 +1,13 @@
 import os, requests, json, base64
+import socket
 
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+ip_address = s.getsockname()[0]
 # This directory is where you have all your results locally, generally named as `allure-results`
 allureResultsDirectory = '/Reports_Allure'
 # This url is where the Allure container is deployed. We are using localhost as example
-allureServer = 'http://172.17.0.2:4040/'
+allureServer ="http://" + str(ip_address) +"/:4040"
 
 
 currentDirectory = os.path.dirname(os.path.realpath(__file__))
