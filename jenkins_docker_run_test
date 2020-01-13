@@ -17,9 +17,10 @@ pipeline {
                 sh '''
                 docker run  -v directory:/workdir svdior/pyslim
                 '''
-                } catch (Exception e) {
+                } 
+            catch (Exception e) {
                  echo "Stage failed, but we continue"  
- }
+            }
         }
     } 
         stage("Allure result"){
