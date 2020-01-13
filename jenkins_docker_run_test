@@ -38,7 +38,7 @@ pipeline {
                  }
                     
                 }
-                  echo "$env.CONTAINER_IP"
+                  echo CONTAINER_IP
                 
             }
         }
