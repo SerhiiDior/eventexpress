@@ -35,9 +35,9 @@ pipeline {
                         CONTAINER_IP = '${sh(docker inspect -f "{{ .NetworkSettings.IPAddress }}" "${env.CONTAINER_ID}")}'
                  }
                     
-                
-                  echo "$env.CONTAINER_IP"
                 }
+                  echo "$env.CONTAINER_IP"
+                
             }
         }
    
