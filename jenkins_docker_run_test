@@ -8,6 +8,9 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
+    environment {
+         CONTAINER_ID = "${sh(script:'docker inspect --format = \"{{.ID}}\" alure',returnStdout: true)}"
+    }
    
    
     
@@ -20,11 +23,6 @@ pipeline {
         }
      }
    
-    environment {
-         CONTAINER_ID = "${sh(script:'docker inspect --format = \"{{.ID}}\" alure',returnStdout: true)}"
-    }
-   
-    
         stage('get container IP') {
             steps {
                 script {
