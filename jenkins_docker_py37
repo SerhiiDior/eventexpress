@@ -27,7 +27,7 @@ pipeline {
       stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                	sh """ docker build --no-cache -t svdior/pyslim:latest -f Dockerfile_pyslim . """
+                	sh """ docker build --no-cache -t svdior/pyslim:latest -f Dockerfile_py37 . """
                 
             }
         }
