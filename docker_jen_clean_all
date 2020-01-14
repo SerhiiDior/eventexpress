@@ -25,7 +25,7 @@ pipeline {
         stage('delete volumes') {
             steps {
                 catchError (buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                sh 'docker volume prune'
+                sh 'docker system prune --volumes -f'
             }
         }
      }
