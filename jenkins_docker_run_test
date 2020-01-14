@@ -27,7 +27,7 @@ pipeline {
         stage('get container IP') {
             environment {
                     CONTAINER_ID = sh(script:'docker inspect --format="{{.ID}}" alure',returnStdout: true)
-                    CONTAINER_IP = sh(script:'docker inspect -f "{{ .NetworkSettings.IPAddress }}" env.CONTAINER_ID', returnStdout: true)
+                    CONTAINER_IP = sh(script:'docker inspect -f "{{ .NetworkSettings.IPAddress }}" ${CONTAINER_ID}', returnStdout: true)
                      
                 }
             steps {
