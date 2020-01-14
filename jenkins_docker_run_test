@@ -19,12 +19,12 @@ pipeline {
             }
         }
      }
-   }
+   
     environment {
          CONTAINER_ID = "${sh(script:'docker inspect --format = \"{{.ID}}\" alure',returnStdout: true)}"
     }
    
-    stages {
+    
         stage('get container IP') {
             steps {
                 script {
