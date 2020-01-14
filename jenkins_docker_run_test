@@ -10,8 +10,7 @@ pipeline {
     }
     environment {
         CONTAINER_NAME = "allure" 
-        CONTAINER_IP = ''
-        CONTAINER_ID = ''
+        
     }
    
     
