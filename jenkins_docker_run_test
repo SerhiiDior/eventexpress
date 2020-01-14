@@ -9,7 +9,7 @@ pipeline {
         timestamps()
     }
     environment {
-        CONTAINER_ID = 'id'
+        
         CONTAINER_IP =  'noli'
     }
   
@@ -23,12 +23,15 @@ pipeline {
             }
         }
      }
+         environment {
+            CONTAINER_ID = "${sh(script:'docker inspect --format = \"{{.ID}}\" alure',returnStdout: true)}"
+    }
         
         stage('get container IP') {
             steps {
                 script {
                     CONTAINER_IP = '${sh(docker inspect -f "{{ .NetworkSettings.IPAddress }}" 230c033b28a1,returnStdout: true)}'
-                    CONTAINER_ID = "${sh(script:'docker inspect --format = \"{{.ID}}\" alure',returnStdout: true)}"
+                    
                     
                 }
                 echo "$env.CONTAINER_IP"
