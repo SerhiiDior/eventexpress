@@ -30,6 +30,14 @@ pipeline {
          }
       }
         
+        stage('Run Tests API') {
+            steps {
+                catchError (buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                sh 'docker run --rm -v directory:/workdir svdior/pyslim python -m pytest apitestingEX\tests\auth\testAuthWithSocialNetwork.py --alluredir Reports_Allure'
+             }
+         }
+      }
+        
         stage('get allure container IP & send result to Allure') {
             environment {
                     CONTAINER_ID = sh(script:'docker inspect --format="{{.ID}}" ${CONTAINER_NAME}',returnStdout: true)
@@ -51,4 +59,5 @@ pipeline {
     }
 }
 
+python -m pytest apitestingEX\tests\auth\testAuthWithSocialNetwork.py --alluredir Reports_Allure
 
