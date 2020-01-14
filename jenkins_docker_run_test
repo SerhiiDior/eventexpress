@@ -32,7 +32,7 @@ pipeline {
             steps {
                 
                 echo "$env.CONTAINER_IP"
-                 sh 'docker run --rm -v directory:/workdir svdior/pyslim python send_resalt.py ${CONTAINER_ID}"'
+                 sh 'docker run --rm -v directory:/workdir svdior/pyslim python send_resalt.py ${CONTAINER_ID}'
             }
         
         }
