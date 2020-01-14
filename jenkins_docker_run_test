@@ -22,13 +22,21 @@ pipeline {
             }
         }
      }
+        stage('Run Tests') {
+            steps {
+                
+                sh 'docker run --rm -v directory:/workdir svdior/pyslim'
+            }
+        }
+     
         
-        stage('get container IP & Test & send resul to Allure') {
+        stage('get allure container IP & send result to Allure') {
             environment {
                     CONTAINER_ID = sh(script:'docker inspect --format="{{.ID}}" ${CONTAINER_NAME}',returnStdout: true)
                     CONTAINER_IP = sh(script:"docker inspect -f \"{{ .NetworkSettings.IPAddress }}\" ${CONTAINER_ID}", returnStdout: true)
                      
                 }
+      
             steps {
                 
                 echo "$env.CONTAINER_IP"
