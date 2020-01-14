@@ -30,4 +30,6 @@ ENV PATH $CHROMEDRIVER_DIR:$PATH
 RUN pip install --upgrade pip
 
 # install selenium
-RUN pip install selenium
+RUN pip3 install -r requirements.txt
+
+CMD pytest --alluredir Reports_Allure Tests 
