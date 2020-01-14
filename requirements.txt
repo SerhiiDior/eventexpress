@@ -1,5 +1,4 @@
 pyodbc
-requests
 allure-pytest==2.8.6
 allure-python-commons==2.8.6
 attr==0.3.1
