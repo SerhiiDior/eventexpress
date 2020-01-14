@@ -1,6 +1,0 @@
-selenium==3.141.0
-urllib3==1.25.7
-allure-pytest==2.8.6
-pytest
-webdriver_manager
-chromedriver-binary==79.0.3945.36
